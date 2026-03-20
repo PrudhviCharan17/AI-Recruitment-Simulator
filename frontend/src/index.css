@@ -1,0 +1,67 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * { box-sizing: border-box; }
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background-color: #f5f7fa;
+    color: #1a1a2e;
+    -webkit-font-smoothing: antialiased;
+  }
+  h1, h2, h3 { font-family: 'Playfair Display', serif; }
+}
+
+@layer components {
+  .btn-primary {
+    @apply bg-accent text-white px-6 py-3 rounded-xl font-body font-semibold
+    hover:bg-accent-dark transition-all duration-200 shadow-glow
+    active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed;
+  }
+  .btn-secondary {
+    @apply bg-white text-primary-500 px-6 py-3 rounded-xl font-body font-semibold
+    border border-surface-300 hover:border-accent hover:text-accent
+    transition-all duration-200 active:scale-95;
+  }
+  .card {
+    @apply bg-white rounded-2xl shadow-card border border-surface-200 p-6;
+  }
+  .card-hover {
+    @apply hover:shadow-card-hover hover:-translate-y-0.5 transition-all duration-300;
+  }
+  .badge {
+    @apply inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold;
+  }
+  .section-label {
+    @apply text-xs font-semibold uppercase tracking-widest text-gray-400;
+  }
+}
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: #f5f7fa; }
+::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
+
+/* Animations */
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+.animate-fade-in-up { animation: fadeInUp 0.5s ease forwards; }
+.animate-shimmer {
+  background: linear-gradient(90deg, #f0f4ff 25%, #e0e9ff 50%, #f0f4ff 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+}
+
+/* Score ring gradient */
+.score-excellent { color: #10b981; }
+.score-good { color: #3b82f6; }
+.score-average { color: #f59e0b; }
+.score-poor { color: #ef4444; }
